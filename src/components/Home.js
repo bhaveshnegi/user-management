@@ -3,11 +3,15 @@ import { Link } from "react-router-dom";  // Import Link for navigation
 import axios from "axios";
 import CreateUserForm from "./CreateUserForm";  // Import CreateUserForm component
 import EditUserForm from "./EditUserForm";  // Import EditUserForm component
+import Modal from "react-modal"; // Importing Modal library
+
+Modal.setAppElement('#root'); // Set the app element for accessibility
 
 // Home component to display users and handle CRUD operations
 function Home() {
   const [users, setUsers] = useState([]);      // State to store list of users
   const [editingUser, setEditingUser] = useState(null);  // State to store user being edited
+  const [isCreating, setIsCreating] = useState(false);  // State to manage modal visibility for creating user
 
   // Fetch users from the API on component mount
   useEffect(() => {
@@ -31,6 +35,7 @@ function Home() {
   // Function to handle the addition of a new user
   const handleCreate = (newUser) => {
     setUsers([...users, newUser]);  // Add new user to the state
+    setIsCreating(false); // Close the modal after user creation
   };
 
   // Function to handle user updates after editing
@@ -43,7 +48,19 @@ function Home() {
   return (
     <div>
       <h1>User Management</h1>
-      <CreateUserForm onCreate={handleCreate} />  {/* Render CreateUserForm for adding new users */}
+      <button onClick={() => setIsCreating(true)}>Create New User</button>  {/* Button to open modal */}
+
+      {/* Modal for creating new user */}
+      <Modal 
+        isOpen={isCreating} 
+        onRequestClose={() => setIsCreating(false)} 
+        contentLabel="Create User Modal"
+      >
+        <h2>Create User</h2>
+        <CreateUserForm onCreate={handleCreate} />
+        <button onClick={() => setIsCreating(false)}>Close</button>
+      </Modal>
+
       <table>
         <thead>
           <tr>
