@@ -1,0 +1,54 @@
+/* Styles for the application */
+
+/* Style for error messages */
+.error {
+    color: red;
+    font-size: 0.875em;
+    margin-top: 5px;
+  }
+  
+  /* Styles for table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  /* Styles for table header and cells */
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Style for alternating row colors */
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Styles for modal */
+  .modal {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+  }
+  
+  /* Style for close button in modal */
+  .close {
+    float: right;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  
