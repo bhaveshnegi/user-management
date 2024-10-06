@@ -23,7 +23,11 @@ function UserDetails() {
       });
   }, [id]);
 
-  if (loading) return <div>Loading...</div>;  // Display loading message
+  if (loading) return (
+    <div className="spinner-container">
+      <div className="spinner"></div>
+    </div>
+  );  // Display loading message
   if (error) return <div>{error}</div>;        // Display error message
 
   return (

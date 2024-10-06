@@ -10,14 +10,22 @@ Modal.setAppElement('#root');
 
 function Home() {
   const [users, setUsers] = useState([]);      
+  const [loading, setLoading] = useState(true); // New loading state
   const [editingUser, setEditingUser] = useState(null);  
   const [isCreating, setIsCreating] = useState(false);  
-  const [searchTerm, setSearchTerm] = useState(""); // Add state for search term
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
+    // Start loading when the component mounts
     axios.get("https://jsonplaceholder.typicode.com/users")
-      .then(response => setUsers(response.data))  
-      .catch(error => console.log(error));        
+      .then(response => {
+        setUsers(response.data);
+        setLoading(false); // Stop loading once data is fetched
+      })  
+      .catch(error => {
+        console.log(error);
+        setLoading(false); // Stop loading if there's an error
+      });        
   }, []);
 
   const deleteUser = (id) => {
@@ -40,7 +48,6 @@ function Home() {
     setEditingUser(null);  
   };
 
-  // Filter users based on the search term
   const filteredUsers = users.filter(user =>
     user.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -50,17 +57,17 @@ function Home() {
       <h1>User Management</h1>
       <button onClick={() => setIsCreating(true)}>Create New User</button>  
 
-      {/* Search Input */}
       <div className="search-container">
         <input
           type="text"
           placeholder="Search by user name..."
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}  // Update search term
+          onChange={(e) => setSearchTerm(e.target.value)}  
           className="search-input"
         />
       </div>
 
+      {/* Modal for creating a new user */}
       <Modal 
         isOpen={isCreating} 
         onRequestClose={() => setIsCreating(false)} 
@@ -71,31 +78,38 @@ function Home() {
         <button onClick={() => setIsCreating(false)}>Close</button>
       </Modal>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredUsers.map(user => (
-            <tr key={user.id}>
-              <td>
-                <Link to={`/user/${user.id}`}>{user.name}</Link>  
-              </td>
-              <td>{user.email}</td>
-              <td>{user.phone}</td>
-              <td>
-                <button onClick={() => editUser(user)}>Edit</button>  
-                <button onClick={() => deleteUser(user.id)}>Delete</button>  
-              </td>
+      {/* Show loading spinner if data is still being fetched */}
+      {loading ? (
+        <div className="spinner-container">
+          <div className="spinner"></div>
+        </div>
+      ) : (
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {filteredUsers.map(user => (
+              <tr key={user.id}>
+                <td>
+                  <Link to={`/user/${user.id}`}>{user.name}</Link>  
+                </td>
+                <td>{user.email}</td>
+                <td>{user.phone}</td>
+                <td>
+                  <button onClick={() => editUser(user)}>Edit</button>  
+                  <button onClick={() => deleteUser(user.id)}>Delete</button>  
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
 
       {editingUser && (
         <EditUserForm
