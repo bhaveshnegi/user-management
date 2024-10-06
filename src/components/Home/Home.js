@@ -4,6 +4,7 @@ import axios from "axios";
 import CreateUserForm from "../CreateUserForm/CreateUserForm";  // Import CreateUserForm component
 import EditUserForm from "../EditUserForm/EditUserForm"; // Import EditUserForm component
 import Modal from "react-modal"; // Importing Modal library
+import './Home.css'
 
 Modal.setAppElement('#root'); // Set the app element for accessibility
 

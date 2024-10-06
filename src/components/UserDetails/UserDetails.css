@@ -1,0 +1,45 @@
+/* List or Table Component */
+.table-container {
+    width: 100%;
+    margin: 20px 0;
+    overflow-x: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1rem;
+  }
+  
+  th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #007bff;
+    color: rgb(1, 0, 0);
+  }
+  
+  @media (max-width: 768px) {
+    table {
+      font-size: 0.9rem;
+    }
+  
+    th, td {
+      padding: 10px 12px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    table {
+      font-size: 0.8rem;
+    }
+  
+    th, td {
+      padding: 8px 10px;
+    }
+  }
+  

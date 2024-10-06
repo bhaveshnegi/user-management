@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./EditUserForm.css"
 
 // Component for editing an existing user
 function EditUserForm({ user, onUpdate, onClose }) {

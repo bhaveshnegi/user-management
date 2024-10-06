@@ -1,0 +1,67 @@
+/* Home Component */
+.home {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .home h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .home .user-list {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .user-item {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .user-item h3 {
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .user-item button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 768px) {
+    .home h1 {
+      font-size: 2rem;
+    }
+  
+    .user-item h3 {
+      font-size: 1rem;
+    }
+  
+    .user-item button {
+      font-size: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .home h1 {
+      font-size: 1.8rem;
+    }
+  
+    .user-item h3 {
+      font-size: 0.9rem;
+    }
+  
+    .user-item button {
+      font-size: 0.7rem;
+    }
+  }
+  

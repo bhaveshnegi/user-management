@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"; // Import useParams to get URL parameters
 import axios from "axios";
+import "./UserDetails.css"
 
 // Component to display user details
 function UserDetails() {
