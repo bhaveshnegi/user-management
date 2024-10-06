@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";  // Import Link for navigation
 import axios from "axios";
-import CreateUserForm from "./CreateUserForm";  // Import CreateUserForm component
-import EditUserForm from "./EditUserForm";  // Import EditUserForm component
+import CreateUserForm from "../CreateUserForm/CreateUserForm";  // Import CreateUserForm component
+import EditUserForm from "../EditUserForm/EditUserForm"; // Import EditUserForm component
 import Modal from "react-modal"; // Importing Modal library
 
 Modal.setAppElement('#root'); // Set the app element for accessibility
