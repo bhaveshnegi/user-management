@@ -1,57 +1,66 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";  // Import Link for navigation
+import { Link } from "react-router-dom";  
 import axios from "axios";
-import CreateUserForm from "../CreateUserForm/CreateUserForm";  // Import CreateUserForm component
-import EditUserForm from "../EditUserForm/EditUserForm"; // Import EditUserForm component
-import Modal from "react-modal"; // Importing Modal library
+import CreateUserForm from "../CreateUserForm/CreateUserForm";  
+import EditUserForm from "../EditUserForm/EditUserForm"; 
+import Modal from "react-modal"; 
 import './Home.css'
 
-Modal.setAppElement('#root'); // Set the app element for accessibility
+Modal.setAppElement('#root'); 
 
-// Home component to display users and handle CRUD operations
 function Home() {
-  const [users, setUsers] = useState([]);      // State to store list of users
-  const [editingUser, setEditingUser] = useState(null);  // State to store user being edited
-  const [isCreating, setIsCreating] = useState(false);  // State to manage modal visibility for creating user
+  const [users, setUsers] = useState([]);      
+  const [editingUser, setEditingUser] = useState(null);  
+  const [isCreating, setIsCreating] = useState(false);  
+  const [searchTerm, setSearchTerm] = useState(""); // Add state for search term
 
-  // Fetch users from the API on component mount
   useEffect(() => {
     axios.get("https://jsonplaceholder.typicode.com/users")
-      .then(response => setUsers(response.data))  // Update users state with fetched data
-      .catch(error => console.log(error));        // Log error if API call fails
+      .then(response => setUsers(response.data))  
+      .catch(error => console.log(error));        
   }, []);
 
-  // Function to handle user deletion
   const deleteUser = (id) => {
     axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`)
-      .then(() => setUsers(users.filter(user => user.id !== id))) // Update users state
-      .catch(error => console.log(error));   // Log error if API call fails
+      .then(() => setUsers(users.filter(user => user.id !== id))) 
+      .catch(error => console.log(error));   
   };
 
-  // Function to handle user editing
   const editUser = (user) => {
-    setEditingUser(user);  // Set the user to be edited
+    setEditingUser(user);  
   };
 
-  // Function to handle the addition of a new user
   const handleCreate = (newUser) => {
-    setUsers([...users, newUser]);  // Add new user to the state
-    setIsCreating(false); // Close the modal after user creation
+    setUsers([...users, newUser]);  
+    setIsCreating(false); 
   };
 
-  // Function to handle user updates after editing
   const handleUpdate = (updatedUser) => {
-    // Update the user in the list with the new data
     setUsers(users.map(user => user.id === updatedUser.id ? updatedUser : user));
-    setEditingUser(null);  // Close the edit modal
+    setEditingUser(null);  
   };
+
+  // Filter users based on the search term
+  const filteredUsers = users.filter(user =>
+    user.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
-    <div>
+    <div className="home">
       <h1>User Management</h1>
-      <button onClick={() => setIsCreating(true)}>Create New User</button>  {/* Button to open modal */}
+      <button onClick={() => setIsCreating(true)}>Create New User</button>  
 
-      {/* Modal for creating new user */}
+      {/* Search Input */}
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search by user name..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}  // Update search term
+          className="search-input"
+        />
+      </div>
+
       <Modal 
         isOpen={isCreating} 
         onRequestClose={() => setIsCreating(false)} 
@@ -72,28 +81,27 @@ function Home() {
           </tr>
         </thead>
         <tbody>
-          {users.map(user => (
+          {filteredUsers.map(user => (
             <tr key={user.id}>
               <td>
-                <Link to={`/user/${user.id}`}>{user.name}</Link>  {/* Link to user details page */}
+                <Link to={`/user/${user.id}`}>{user.name}</Link>  
               </td>
               <td>{user.email}</td>
               <td>{user.phone}</td>
               <td>
-                <button onClick={() => editUser(user)}>Edit</button>  {/* Edit button */}
-                <button onClick={() => deleteUser(user.id)}>Delete</button>  {/* Delete button */}
+                <button onClick={() => editUser(user)}>Edit</button>  
+                <button onClick={() => deleteUser(user.id)}>Delete</button>  
               </td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      {/* Render EditUserForm modal if editingUser is set */}
       {editingUser && (
         <EditUserForm
-          user={editingUser}                // Pass the user being edited
-          onUpdate={handleUpdate}            // Function to call after user update
-          onClose={() => setEditingUser(null)}  // Close modal function
+          user={editingUser}                
+          onUpdate={handleUpdate}            
+          onClose={() => setEditingUser(null)}  
         />
       )}
     </div>

@@ -1,4 +1,4 @@
-/* Home Component */
+/* Home Component Styles */
 .home {
     text-align: center;
     margin-top: 50px;
@@ -10,13 +10,39 @@
     margin-bottom: 20px;
   }
   
-  .home .user-list {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  .search-container {
+    margin-bottom: 20px;
+    text-align: center;
   }
   
+  .search-input {
+    padding: 10px;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  /* Table Styles */
+  table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  table th, table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  /* User Item Styles */
   .user-item {
     background-color: #fff;
     border-radius: 8px;
