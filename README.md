@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+🚀 **User Management System**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Tagline:** "A simple user management system built with React"
 
-## Available Scripts
+📖 **Description**
 
-In the project directory, you can run:
+The User Management System is a React-based application that allows users to create, edit, and view their information. The system is designed to be simple and easy to use, with a focus on providing a seamless user experience. The application consists of several components, including a home page, user details page, and edit user form.
 
-### `npm start`
+The system uses React Router for client-side routing and Axios for making API requests. The application is built using a modular architecture, with each component responsible for a specific functionality.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**✨ Features**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **User Registration**: Users can create new accounts by filling out a registration form.
+2. **User Profile**: Users can view their own profile information and edit their details.
+3. **User List**: Administrators can view a list of all users in the system.
+4. **Edit User**: Administrators can edit the details of existing users.
+5. **Delete User**: Administrators can delete existing users.
+6. **Validation**: Form validation is used to ensure that user input is valid and accurate.
+7. **Responsive Design**: The application is designed to be responsive and works well on desktop and mobile devices.
+8. **Authentication**: The application uses Axios to make API requests to a backend server for authentication and authorization.
+9. **Error Handling**: The application includes error handling to ensure that the user is notified of any errors that occur.
+10. **Modal Windows**: Modal windows are used to display additional information and prompts to the user.
 
-### `npm test`
+**🧰 Tech Stack Table**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Category | Technology |
+| --- | --- |
+| Frontend | React, React Router, Axios, CSS |
+| Backend | N/A (client-side only) |
+| Tools | Visual Studio Code, Git |
 
-### `npm run build`
+**📁 Project Structure**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* `components`: Contains React components for the application.
+	+ `CreateUserForm`: Handles user registration.
+	+ `EditUserForm`: Handles editing user details.
+	+ `Home`: Handles the home page.
+	+ `UserDetails`: Handles displaying user details.
+* `containers`: Contains React containers for the application.
+	+ `App`: The main application component.
+* `css`: Contains CSS files for the application.
+	+ `CreateUserForm.css`: Styles for the create user form.
+	+ `EditUserForm.css`: Styles for the edit user form.
+	+ `Home.css`: Styles for the home page.
+	+ `UserDetails.css`: Styles for the user details page.
+* `index.js`: The entry point for the application.
+* `package.json`: Lists dependencies for the application.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**⚙️ How to Run**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Setup**: Clone the repository and install dependencies using `npm install`.
+2. **Environment**: Set the environment variable `REACT_APP_API_URL` to the URL of your backend server.
+3. **Build**: Run `npm run build` to build the application.
+4. **Deploy**: Deploy the application to a production environment.
 
-### `npm run eject`
+**🧪 Testing Instructions**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. **Unit Testing**: Run `npm test` to run unit tests using Jest.
+2. **Integration Testing**: Run `npm run test:integration` to run integration tests using Jest.
+😊
